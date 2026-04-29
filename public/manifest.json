@@ -1,0 +1,10 @@
+{
+  "name": "HotelHub",
+  "short_name": "HotelHub",
+  "description": "Modern Hotel Management System",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e293b",
+  "theme_color": "#1e293b",
+  "icons": []
+}

@@ -68,9 +68,9 @@ function BookingOverviewChart({ data }: BookingChartProps) {
           </button>
         </div>
       </div>
-      <div className="h-72 min-h-[18rem]">
+      <div className="h-72 min-h-[18rem] min-w-0">
         {mounted ? (
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height={288}>
             <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
               <XAxis
@@ -140,9 +140,9 @@ function RoomStatusDonut({ data }: RoomStatusChartProps) {
         <h3 className="text-lg font-semibold text-slate-800">Room Status</h3>
         <p className="text-sm text-slate-500">Current occupancy</p>
       </div>
-      <div className="h-72 min-h-[18rem] flex items-center">
+      <div className="h-72 min-h-[18rem] flex items-center min-w-0">
         {mounted ? (
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height={288}>
             <PieChart>
               <Pie
                 data={data}

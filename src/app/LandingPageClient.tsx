@@ -23,8 +23,17 @@ export default function LandingPageClient() {
   const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(prev => !prev);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   const handleLoginClick = () => {
     router.push('/login');
+    closeMobileMenu();
   };
 
   const rooms = [
@@ -88,19 +97,35 @@ export default function LandingPageClient() {
                 Login
               </button>
               <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 hover:bg-slate-100 rounded-lg"
+                type="button"
+                onClick={() => setMobileMenuOpen(prev => !prev)}
+                className="md:hidden p-2 hover:bg-slate-100 rounded-lg cursor-pointer"
                 aria-label="Toggle mobile menu"
                 aria-expanded={mobileMenuOpen}
               >
-                <div className="w-5 h-0.5 bg-slate-600 mb-1"></div>
-                <div className="w-5 h-0.5 bg-slate-600 mb-1"></div>
-                <div className="w-5 h-0.5 bg-slate-600"></div>
+                <div className="w-5 h-px bg-slate-600 mb-1.5"></div>
+                <div className="w-5 h-px bg-slate-600 mb-1.5"></div>
+                <div className="w-5 h-px bg-slate-600"></div>
               </button>
             </div>
           </div>
         </div>
       </nav>
+
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-slate-200 px-4 py-4 space-y-3">
+          <a href="#features" className="block text-sm font-medium text-slate-600 hover:text-slate-900 py-2" onClick={() => setMobileMenuOpen(false)}>Features</a>
+          <a href="#rooms" className="block text-sm font-medium text-slate-600 hover:text-slate-900 py-2" onClick={() => setMobileMenuOpen(false)}>Rooms</a>
+          <a href="#testimonials" className="block text-sm font-medium text-slate-600 hover:text-slate-900 py-2" onClick={() => setMobileMenuOpen(false)}>Reviews</a>
+          <a href="#contact" className="block text-sm font-medium text-slate-600 hover:text-slate-900 py-2" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+          <button
+            onClick={() => { handleLoginClick(); setMobileMenuOpen(false); }}
+            className="w-full bg-slate-900 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-slate-800 transition-all text-left"
+          >
+            Login
+          </button>
+        </div>
+      )}
 
       <main className="pt-20">
         <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900">
